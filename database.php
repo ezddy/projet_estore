@@ -9,7 +9,10 @@
 		$stmt = $db->prepare($sqlCommand);
 		$stmt->execute() or die(print_r($stmt->errorInfo(), true));
 	}
-
+	function insert_user($email, $password, $address, $phone, $city, $zipcode, $lastname, $firstname) {
+		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$password', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname')";
+		exec_cmd($sqlCommand);
+	}
 	function insert_product($name, $description, $price, $image, $category, $brand) {
 		$db = get_db_connection();
 		$db->exec("INSERT INTO Product VALUES(NULL, '$name', '$description', '$price', '$image', '$id_cat', '$id_brand')") or die("insert product impossible");
@@ -27,7 +30,7 @@
 
 	function insert_order($shipping_address, $status, $dateOrder, $totalPrice, $user) {
 		$db = get_db_connection();
-		$db->exec("INSERT INTO Order VALUES(NULL, '$shipping_address', '$status', NULL, '$dateOrder', '$totalPrice', '$user')") or die ("insert order impossible");
+		$db->exec("INSERT INTO Orders VALUES(NULL, '$shipping_address', '$status', NULL, '$dateOrder', '$totalPrice', '$user')") or die (print_r($db->errorInfo(), true));
 	}
 
 	function insert_contains($order, $product) {
