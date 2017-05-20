@@ -4,13 +4,20 @@
 		return $db;
 	}
 
+	function query_cmd($sqlCommand) {
+		$db = get_db_connection();
+		return $db->query($sqlCommand);
+	}
+
 	function exec_cmd($sqlCommand) {
 		$db = get_db_connection();
 		$stmt = $db->prepare($sqlCommand);
 		$stmt->execute() or die(print_r($stmt->errorInfo(), true));
 	}
-	function insert_user($email, $password, $address, $phone, $city, $zipcode, $lastname, $firstname) {
-		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$password', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname')";
+	function insert_user($email, $password, $address, $phone, $city, $zipcode, $lastname, $firstname, $role) {
+		$salt = mcrypt_create_iv(32, MCRYPT_DEV_URANDOM);
+		$encryptedPW = crypt($password, $salt);
+		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$encryptedPW', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname', '$salt', '$role')";
 		exec_cmd($sqlCommand);
 	}
 	function insert_product($name, $description, $price, $image, $category, $brand) {
