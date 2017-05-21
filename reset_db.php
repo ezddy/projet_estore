@@ -1,5 +1,6 @@
 <?php  
 	require_once('database.php');
+        require_once('controller/mail.php');
 	// We have to make sure to drop the TABLE IF EXISTS which contains foreign key, etc before everything else
 	exec_cmd("DROP TABLE IF EXISTS contains");
 	exec_cmd("DROP TABLE IF EXISTS Product");
@@ -12,9 +13,9 @@
 	
 	exec_cmd("CREATE TABLE User(
         id            int (11) Auto_increment  NOT NULL ,
-        email         Varchar (25) ,
+        email         Varchar (40) ,
         password      varbinary (33) ,
-        address       Varchar (25) ,
+        address       Varchar (30) ,
         phone         Varchar (25) ,
         city          Varchar (25) ,
         zipcode       Varchar (25) ,
@@ -28,7 +29,7 @@
         id          int (11) Auto_increment  NOT NULL ,
         name        Varchar (25) ,
         description Longtext ,
-        price       Double ,
+        price       money ,
         image       Varchar (25) ,
         id_Category Int ,
         id_Brand    Int ,
@@ -50,6 +51,7 @@
         dateDelivery Date ,
         dateOrder    Date ,
         id_User      Int ,
+        totalPrice   money,
         PRIMARY KEY (id )
 )");
 	exec_cmd("CREATE TABLE contains(
@@ -70,6 +72,4 @@
 	
         // Inserting admin
         insert_user('david@gmail.com', 'azerty', '84 bd massena', '0673367797', 'Paris', '75013', 'Ha', 'David', 'admin');
-
-
 ?>
