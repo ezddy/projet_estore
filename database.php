@@ -25,10 +25,17 @@
 		$db = get_db_connection();
 		$stmt = $db->prepare('INSERT INTO User (email, password, address, phone, city, zipcode, lastname, firstname, password_salt, role, hash) VALUES(:email, :password, :address, :phone, :city, :zipcode, :lastname, :firstname, :password_salt, :role, :hash)');
 		$stmt->bindParam(':email', $email);
-		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':password', $encryptedPW);
 		$stmt->bindParam(':address', $address);
 		$stmt->bindParam(':phone', $phone);
 		$stmt->bindParam(':city', $city);
+		$stmt->bindParam(':zipcode', $zipcode);
+		$stmt->bindParam(':lastname', $lastname);
+		$stmt->bindParam(':firstname', $firstname);
+		$stmt->bindParam(':password_salt', $salt);
+		$stmt->bindParam(':role', $role);
+		$stmt->bindParam(':hash', $hash);
+		$stmt->execute();
 
 		if($role === "pending_user") {
 			$link = 'http://localhost:8888/verify.php?user='.$email.'&token='.$hash;
@@ -44,12 +51,20 @@
 		echo "$category <br>";
 		echo "$brand <br>";
 		$db = get_db_connection();
-		$db->exec("INSERT INTO Product VALUES(NULL, '$name', '$description', '$price', '$image', '$category', '$brand')") or die("insert product impossible");
+		$stmt = $db->prepare("INSERT INTO Product (name, description, price, image, id_Category, id_Brand VALUES(:name, :description, :price, :image, :category, :brand)");
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':description', $description);
+		$stmt->bindParam(':price', $price);
+		$stmt->bindParam(':image', $image);
+		$stmt->bindParam(':category', $category);
+		$stmt->bindParam(':brand', $brand);
+		$stmt->execute() or die ('insert product impossible');
 	}
 
 	function insert_brand($name) {
 		$db = get_db_connection();
-		$db->exec("INSERT INTO Brand VALUES(NULL, '$name')") or die ("insert brand impossible");
+		$stmt = $db->prepare("INSERT INTO Brand (name) VALUES(:name)");
+		$stmt->bindParam(':name', $name);
 	}
 
 	function insert_category($name) {
@@ -73,28 +88,16 @@
 
 	function insert_contains($order, $product) {
 		$db = get_db_connection();
-		$db->exec("INSERT INTO contains VALUES('$order, '$product')") or die ("insert contains impossible");
-	}
-
-	function get_list_category(){
-		$db = get_db_connection();
-		$db = $db->query("SELECT * FROM Category");
-		foreach ($db as $row) {
-			echo '<option value="'.$row[id].'">'.$row[name].'</option>';
-		}
-	}
-
-	function get_list_brand(){
-		$db = get_db_connection();
-		$db = $db->query("SELECT * FROM Brand");
-		foreach ($db as $row) {
-			echo '<option value="'.$row[id].'">'.$row[name].'</option>';
-		}
+		$stmt = $db->prepare("INSERT INTO contains VALUES(:order, :product)");
+		$stmt->bindParam(':order', $order);
+		$stmt->bindParam(':product', $product);
+		$stmt->execute() or die ('insert contains impossible');
 	}
 
 	function user_exists($email) {
 		$db = get_db_connection();
-		$stmt = $db->prepare("SELECT email FROM User WHERE email = '$email'");
+		$stmt = $db->prepare("SELECT email FROM User WHERE email = :email");
+		$stmt->bindParam(':email', $email);
     	$stmt->execute() or die (print_r($stmt->errorInfo(), true));
 
 	    if($stmt->rowCount() > 0){
