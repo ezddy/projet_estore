@@ -22,8 +22,13 @@
 		$salt = mcrypt_create_iv(32, MCRYPT_DEV_URANDOM);
 		$encryptedPW = crypt($password, $salt);
 		$hash = md5(rand(0,1000));
-		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$encryptedPW', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname', '$salt', '$role', '$hash')";
-		exec_cmd($sqlCommand);
+		$db = get_db_connection();
+		$stmt = $db->prepare('INSERT INTO User (email, password, address, phone, city, zipcode, lastname, firstname, password_salt, role, hash) VALUES(:email, :password, :address, :phone, :city, :zipcode, :lastname, :firstname, :password_salt, :role, :hash)');
+		$stmt->bindParam(':email', $email);
+		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':address', $address);
+		$stmt->bindParam(':phone', $phone);
+		$stmt->bindParam(':city', $city);
 
 		if($role === "pending_user") {
 			$link = 'http://localhost:8888/verify.php?user='.$email.'&token='.$hash;
@@ -49,13 +54,21 @@
 
 	function insert_category($name) {
 		$db = get_db_connection();
-		$db->exec("INSERT INTO Category VALUES(NULL, '$name')") or die ("insert category impossible");
+		$stmt = $db->prepare("INSERT INTO Category (name) VALUES(:name)");
+		$stmt->bindParam(':name', $name);
+		$stmt->execute() or die ('insert category impossible');
 	}
 
 	// A refaire pour match avec la nouvelle DB
 	function insert_order($shipping_address, $status, $dateOrder, $totalPrice, $user) {
 		$db = get_db_connection();
-		$db->exec("INSERT INTO Orders VALUES(NULL, '$shipping_address', '$status', NULL, '$dateOrder', '$totalPrice', '$user')") or die (print_r($db->errorInfo(), true));
+		$stmt = $db->prepare("INSERT INTO Orders(status, shipping_address, dateOrder, id_User, totalPrice) VALUES(:status, :shipping_address, :dateOrder, :id_User, :totalPrice)");
+		$stmt->bindParam(':status', $status);
+		$stmt->bindParam(':shipping_address', $shipping_address);
+		$stmt->bindParam(':dateOrder', $dateOrder);
+		$stmt->bindParam(':totalPrice', $totalPrice);
+		$stmt->bindParam(':id_User', $user);
+		$stmt->execute() or die ('insert order impossible');
 	}
 
 	function insert_contains($order, $product) {

@@ -120,8 +120,8 @@ if(isset($_SESSION['user'])) {
 						<div class="acc_content clearfix">
 							<form id="login-form" name="login-form" class="nobottommargin" action="controller/login_c.php" method="post">
 								<div class="col_full">
-									<label for="login-form-username">Username:</label>
-									<input type="text" id="login" name="login" class="form-control" />
+									<label for="login">Username:</label>
+									<input type="email" id="login" name="login" class="form-control" />
 								</div>
 
 								<div class="col_full">

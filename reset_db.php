@@ -49,6 +49,7 @@
 	exec_cmd("CREATE TABLE Orders(
         id           int (11) Auto_increment  NOT NULL ,
         status       Varchar (25) ,
+        shipping_address        Varchar(50),
         dateDelivery Date ,
         dateOrder    Date ,
         id_User      Int ,

@@ -31,14 +31,14 @@ include_once('header.html');
 							<?php if(!isset($_SESSION['user'])) { ?>
 							<li><a href="login.php">Login</a>
 								<div class="top-link-section">
-									<form id="top-login" role="form" action="#">
+									<form id="top-login" role="form" action="controller/login_c.php" method="post">
 										<div class="input-group" id="top-login-username">
 											<span class="input-group-addon"><i class="icon-user"></i></span>
-											<input type="email" class="form-control" placeholder="Email address" required="">
+											<input type="email" name="login" id="login" class="form-control" placeholder="Email address" required="">
 										</div>
 										<div class="input-group" id="top-login-password">
 											<span class="input-group-addon"><i class="icon-key"></i></span>
-											<input type="password" class="form-control" placeholder="Password" required="">
+											<input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
 										</div>
 										<label class="checkbox">
 										  <input type="checkbox" value="remember-me"> Remember me
@@ -49,7 +49,11 @@ include_once('header.html');
 							</li>
 						</ul><?php } else {
 							?>
-							<li><a href="profile.php"><?php echo $_SESSION['user']->getLastname(). ' ' .$_SESSION['user']->getFirstname(); ?></a></li>
+							<li><a href="profile.php"><?php echo $_SESSION['user']->getLastname(). ' ' .$_SESSION['user']->getFirstname(); ?></a>
+								<div class="top-link-section">
+									<a href="controller/logout_c.php">Logout</a>
+								</div>
+							</li>
 							<?php } ?>
 					</div><!-- .top-links end -->
 
