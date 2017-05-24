@@ -23,13 +23,14 @@
         firstname     Varchar (25) ,
         password_salt varbinary (33) ,
         role          Varchar (25) ,
+        hash          Varchar(33),
         PRIMARY KEY (id )
 )");
 	exec_cmd("CREATE TABLE Product(
         id          int (11) Auto_increment  NOT NULL ,
         name        Varchar (25) ,
         description Longtext ,
-        price       money ,
+        price       decimal(19,4) ,
         image       Varchar (25) ,
         id_Category Int ,
         id_Brand    Int ,
@@ -51,7 +52,7 @@
         dateDelivery Date ,
         dateOrder    Date ,
         id_User      Int ,
-        totalPrice   money,
+        totalPrice   decimal(19,4),
         PRIMARY KEY (id )
 )");
 	exec_cmd("CREATE TABLE contains(

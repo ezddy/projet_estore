@@ -21,11 +21,12 @@
 	function insert_user($email, $password, $address, $phone, $city, $zipcode, $lastname, $firstname, $role) {
 		$salt = mcrypt_create_iv(32, MCRYPT_DEV_URANDOM);
 		$encryptedPW = crypt($password, $salt);
-		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$encryptedPW', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname', '$salt', '$role')";
+		$hash = md5(rand(0,1000));
+		$sqlCommand = "INSERT INTO User VALUES(NULL, '$email', '$encryptedPW', '$address', '$phone', '$city', '$zipcode', '$lastname', '$firstname', '$salt', '$role', '$hash')";
 		exec_cmd($sqlCommand);
 
 		if($role === "pending_user") {
-			$link = 'http://localhost:8888/verify.php?user='.$email.'&token='.$encryptedPW;
+			$link = 'http://localhost:8888/verify.php?user='.$email.'&token='.$hash;
 			send_email($email, 'E-mail verification from eStore', 'Verify your account by clicking on this link : ' . $link);
 		}
 	}
