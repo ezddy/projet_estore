@@ -1,6 +1,6 @@
 <?php	
 $path = $_SERVER["DOCUMENT_ROOT"];
-$path .= "/database.php";
+$path .= "projet_estore/database.php";
 require_once($path);
 class User {
 	private $email;
@@ -56,9 +56,59 @@ class User {
 		return $this->firstname;
 	}
 
+	public function getMail() {
+		return $this->email;
+	}
 
 	public function logout() {
 		session_destroy();
+	}
+
+	public function get_last_5_orders(){
+		$email = $this->email;
+		$cmd = "SELECT status, dateDelivery, dateOrder, totalPrice FROM orders o, user u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC LIMIT 5";
+		echo "$cmd";
+
+		$cmd = query_cmd($cmd);
+
+		foreach ($cmd as $row) {
+			echo "
+			<tr>
+				<td>
+					<code>".$row['dateOrder']."</code>
+				</td>
+				<td>".$row['status']."</td>
+			</tr>
+				";
+		}
+	}
+
+	public function get_orders(){
+		$email = $this->email;
+		$cmd = "SELECT status, shipping_address, dateDelivery, dateOrder FROM orders o, user u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC";
+		$cmd = query_cmd($cmd);
+
+		foreach ($cmd as $row) {
+			if($row['dateDelivery'] === NULL){
+				$dateDelivery = "Not delivered yet";
+			}
+			else{
+				$dateDelivery = $row['dateDelivery'];
+			}
+
+			echo "
+				<tr>
+					<td>
+						<code>".$row['dateOrder']."</code>
+					</td>
+					<td>
+						<code>".$dateDelivery."</code>
+					</td>
+					<td>".$row['status']."</td>
+					<td>".$row['shipping_address']."</td>
+				</tr>
+				";
+		}
 	}
 }
 

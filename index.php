@@ -2,6 +2,7 @@
 include_once('model/user.php');
 session_start();
 include_once('header.html');
+include_once('database.php');
 ?>
 <body class="stretched">
 
@@ -116,48 +117,8 @@ include_once('header.html');
 								<li class="current"><a href="#"><div>Home</div></a></li>
 								<!-- Mega Menu
 								============================================= -->
-								<li class="mega-menu"><a href="#"><div>Keyboards</div></a>
-									<div class="mega-menu-content style-2 clearfix">
-										<ul>
-											<li><a href="shop.html"><div>Razer</div></a>
-											</li>
-											<li><a href="shop.html"><div>Corsair</div></a>
-											</li>
-											<li><a href="shop.html"><div>Steelseries</div></a>
-											</li>
-											<li><a href="shop.html"><div>Logitech</div></a>
-											</li>
-										</ul>
-									</div>
-								</li><!-- .mega-menu end -->
-								<li class="mega-menu"><a href="#"><div>Mouses</div></a>
-									<div class="mega-menu-content style-2 clearfix">
-										<ul>
-											<li><a href="shop.html"><div>Razer</div></a>
-											</li>
-											<li><a href="shop.html"><div>Zowie</div></a>
-											</li>
-											<li><a href="shop.html"><div>Steelseries</div></a>
-											</li>
-											<li><a href="shop.html"><div>Logitech</div></a>
-											</li>
-										</ul>
-									</div>
-								</li><!-- .mega-menu end -->
-								<li class="mega-menu"><a href="#"><div>Headsets</div></a>
-									<div class="mega-menu-content style-2 clearfix">
-										<ul>
-											<li><a href="shop.html"><div>Razer</div></a>
-											</li>
-											<li><a href="shop.html"><div>Corsair</div></a>
-											</li>
-											<li><a href="shop.html"><div>Steelseries</div></a>
-											</li>
-											<li><a href="shop.html"><div>Logitech</div></a>
-											</li>
-										</ul>
-									</div>
-								</li><!-- .mega-menu end -->
+								<?php fill_nav(); ?>
+								<!-- .mega-menu end -->
 							</ul>
 						<!-- Top Cart
 						============================================= -->

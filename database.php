@@ -1,6 +1,6 @@
 <?php 
 	$path = $_SERVER["DOCUMENT_ROOT"];
-	$path .= '/controller/mail.php';
+	$path .= 'projet_estore/controller/mail.php';
 	require_once($path);
 	function get_db_connection() {
 		$db = new PDO('mysql:host=localhost:3305;dbname=web_prog','root','root');
@@ -105,5 +105,41 @@
 	    } else {
 	        return false;
 	    }
+	}
+
+	function fill_nav(){
+		$db = get_db_connection();
+
+		$cmdCateg = $db->prepare("SELECT * FROM category");
+		$cmdBrand = $db->prepare("SELECT DISTINCT b.name AS brandName FROM brand b, product p WHERE b.id=id_Brand AND id_Category=:category");
+
+		$cmdBrand->bindParam(':category', $categ);
+
+		$cmdCateg->execute() or die (print_r($cmdCateg->errorInfo(), true));
+		//$cmdBrand->execute() or die (print_r($cmdBrand->errorInfo(), true));
+
+		while ($rowCateg = $cmdCateg->fetch()) {
+			echo '
+				<li class="mega-menu"><a href="#"><div>'.$rowCateg['name'].'</div></a>
+					<div class="mega-menu-content style-2 clearfix">
+						<ul>
+			';
+
+			$categ = $rowCateg['id'];
+			$cmdBrand->execute() or die (print_r($cmdBrand->errorInfo(), true));
+			while ($rowBrand = $cmdBrand->fetch()) {
+				echo '
+					<li><a href="shop.php?Category='.$rowCateg['name'].'&Brand='.$rowBrand['brandName'].'"><div>'.$rowBrand['brandName'].'</div></a>
+					</li>
+				';
+			}
+			echo '
+						</ul>
+					</div>
+				</li>
+
+			';
+		}
+
 	}
 ?>
