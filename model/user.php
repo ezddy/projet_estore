@@ -56,6 +56,9 @@ class User {
 		return $this->firstname;
 	}
 
+	public function getRole() {
+		return $this->role;
+	}
 
 	public function logout() {
 		session_destroy();

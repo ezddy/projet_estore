@@ -44,12 +44,6 @@
 	}
 
 	function insert_product($name, $description, $price, $image, $category, $brand) {
-		echo "$name <br>";
-		echo "$description <br>";
-		echo "$price <br>";
-		echo "$image <br>";
-		echo "$category <br>";
-		echo "$brand <br>";
 		$db = get_db_connection();
 		$stmt = $db->prepare("INSERT INTO Product (name, description, price, image, id_Category, id_Brand VALUES(:name, :description, :price, :image, :category, :brand)");
 		$stmt->bindParam(':name', $name);
@@ -65,6 +59,7 @@
 		$db = get_db_connection();
 		$stmt = $db->prepare("INSERT INTO Brand (name) VALUES(:name)");
 		$stmt->bindParam(':name', $name);
+		$stmt->execute() or die ('insert brand impossible');
 	}
 
 	function insert_category($name) {
@@ -74,7 +69,6 @@
 		$stmt->execute() or die ('insert category impossible');
 	}
 
-	// A refaire pour match avec la nouvelle DB
 	function insert_order($shipping_address, $status, $dateOrder, $totalPrice, $user) {
 		$db = get_db_connection();
 		$stmt = $db->prepare("INSERT INTO Orders(status, shipping_address, dateOrder, id_User, totalPrice) VALUES(:status, :shipping_address, :dateOrder, :id_User, :totalPrice)");
