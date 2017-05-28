@@ -60,6 +60,10 @@ class User {
 		return $this->email;
 	}
 
+	public function getRole() {
+		return $this->role;
+	}
+
 	public function logout() {
 		session_destroy();
 	}
