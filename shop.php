@@ -1,3 +1,4 @@
+<?php include_once("database.php"); ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -225,95 +226,17 @@
 					<!-- Shop
 					============================================= -->
 					<div id="shop" class="shop product-1 clearfix">
-
-						<div class="product clearfix">
-							<div class="product-image">
-								<a href="#"><img src="images/items/steelseries_6gv2.jpg" alt="Steelseries 6GV2"></a>
-								<a href="#"><img src="images/items/steelseries_6gv2.jpg" alt="Steelseries 6GV2"></a>
-								<div class="sale-flash">50% Off*</div>
-								<div class="product-overlay">
-									<a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-									<a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
-								</div>
-							</div>
-							<div class="product-desc">
-								<div class="product-title"><h3><a href="#">Steelseries 6gv2</a></h3></div>
-								<div class="product-price"><del>$24.99</del> <ins>$12.49</ins></div>
-								<div class="product-rating">
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star-half-full"></i>
-								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, sit, exercitationem, consequuntur, assumenda iusto eos commodi alias aut ipsum praesentium officia pariatur doloremque dolor tenetur esse vitae voluptatibus inventore delectus. Eaque laboriosam quaerat accusamus! Porro, laboriosam temporibus dolorum doloremque dolorem ex ducimus recusandae repellat neque sapiente ab numquam rerum deleniti!</p>
-								<ul class="iconlist">
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas iure quod, asperiores debitis cum rem tenetur autem praesentium quisquam eligendi doloribus, velit ipsum temporibus esse culpa totam veniam dolorem veritatis!</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed itaque quos delectus a, quis est, fugiat praesentium reprehenderit, numquam explicabo, voluptatum veritatis amet natus fugit vero aliquid nam aperiam inventore.</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fuga fugit obcaecati nobis veritatis officiis architecto eaque ut hic quae delectus natus, iusto nulla consequatur saepe vel, perspiciatis placeat ab?</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis vel provident obcaecati aliquid mollitia ducimus aut a id similique saepe culpa ut optio debitis distinctio numquam perferendis, consectetur fugit unde.</li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="product clearfix">
-							<div class="product-image">
-								<a href="#"><img src="images/items/logitech_gpro.jpg" alt="Logitech GPRO"></a>
-								<a href="#"><img src="images/items/logitech_gpro.jpg" alt="Logitech GPRO"></a>
-								<div class="product-overlay">
-									<a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-									<a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
-								</div>
-							</div>
-							<div class="product-desc">
-								<div class="product-title"><h3><a href="#">Logitech GPro</a></h3></div>
-								<div class="product-price">$39.99</div>
-								<div class="product-rating">
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star-half-full"></i>
-									<i class="icon-star-empty"></i>
-								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, sit, exercitationem, consequuntur, assumenda iusto eos commodi alias aut ipsum praesentium officia pariatur doloremque dolor tenetur esse vitae voluptatibus inventore delectus. Eaque laboriosam quaerat accusamus! Porro, laboriosam temporibus dolorum doloremque dolorem ex ducimus recusandae repellat neque sapiente ab numquam rerum deleniti!</p>
-								<ul class="iconlist">
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, accusantium non. Nesciunt tempore provident quia, perspiciatis, error impedit veritatis facere inventore totam architecto, rerum. Reprehenderit labore atque vel quo cumque.</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, odio error exercitationem earum inventore deserunt expedita nihil. Adipisci facilis odit, libero blanditiis fuga, dignissimos ea porro ad doloremque magni. Tenetur.</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit saepe, atque odit fuga dicta excepturi porro laborum deserunt quis ducimus a voluptatibus minus accusantium optio assumenda, obcaecati odio qui architecto!</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dolor totam, dolorem odit reiciendis ex odio autem error harum nobis praesentium? Perferendis eos voluptates officiis molestias. Labore est, illum dicta.</li>
-								</ul>
-							</div>
-						</div>
-
-						
-						<div class="product clearfix">
-							<div class="product-image">
-								<a href="#"><img src="images/items/steelseries_apex_100.jpg" alt="Steelseries Apex 100"></a>
-								<a href="#"><img src="images/items/steelseries_apex_100.jpg" alt="Steelseries Apex 100"></a>
-								<div class="product-overlay">
-									<a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-									<a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
-								</div>
-							</div>
-							<div class="product-desc">
-								<div class="product-title"><h3><a href="#">Steelseries apex 100</a></h3></div>
-								<div class="product-price">$129.99</div>
-								<div class="product-rating">
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star3"></i>
-									<i class="icon-star-half-full"></i>
-								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, sit, exercitationem, consequuntur, assumenda iusto eos commodi alias aut ipsum praesentium officia pariatur doloremque dolor tenetur esse vitae voluptatibus inventore delectus. Eaque laboriosam quaerat accusamus! Porro, laboriosam temporibus dolorum doloremque dolorem ex ducimus recusandae repellat neque sapiente ab numquam rerum deleniti!</p>
-								<ul class="iconlist">
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam suscipit, perspiciatis. Incidunt dolores quia ratione, repellat, eos cupiditate iusto, cumque aliquid dolorem eveniet commodi facilis. Dolor voluptatum dolorem modi recusandae!</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolore laboriosam molestias earum ab, suscipit velit vitae dolor adipisci dicta praesentium et dolores eum asperiores iure vero sed optio. Ullam.</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, debitis magnam natus quas. Minima, odit numquam totam consequuntur exercitationem eum obcaecati, soluta explicabo quas quidem tenetur iste quo nesciunt quae.</li>
-									<li><i class="icon-caret-right"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat non earum hic, dignissimos ipsam doloremque deserunt vel perferendis commodi est omnis nulla accusantium ipsa, laboriosam! Tempora et repellat, tempore sequi!</li>
-								</ul>
-							</div>
-						</div>
+						<?php 
+							if(!isset($_GET['Category'])){
+								$_GET['Category']="";
+							}
+							if(!isset($_GET['Brand'])){
+								$_GET['Brand']="";
+							}
+							fill_shop($_GET['Category'], $_GET['Brand']); 
+							//echo get_id_brand($_GET['Brand']);
+							//echo get_id_category($_GET['Category']);
+						?>
 					</div><!-- #shop end -->
 				</div>
 			</div>
