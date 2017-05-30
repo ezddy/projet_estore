@@ -1,6 +1,6 @@
 <?php  
 	$path = $_SERVER["DOCUMENT_ROOT"];
-	$path .= "/include/phpmailer/PHPMailerAutoload.php";
+	$path .= "projet_estore/include/phpmailer/PHPMailerAutoload.php";
 	require_once($path);
 
 	function send_email($to, $subject, $body) {

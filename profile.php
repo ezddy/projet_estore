@@ -1,7 +1,6 @@
 <?php 
+	include_once("model/user.php");
 	session_start();
-	
-
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -142,8 +141,8 @@
 							<img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 
 							<div class="heading-block noborder">
-								<h3>Ha David</h3>
-								<span>Your Profile Bio</span>
+								<h3><?php echo $_SESSION['user']->getLastname()." ".$_SESSION['user']->getFirstname()/*->getLastname()." ".$_SESSION['user']->getFirstname()*/; ?></h3>
+								<span>Your Profile</span>
 							</div>
 
 							<div class="clear"></div>
@@ -179,36 +178,7 @@
 														</tr>
 													  </thead>
 													  <tbody>
-														<tr>
-														  <td>
-															<code>5/23/2016</code>
-														  </td>
-														  <td>Payment for Steelseries 6gv2 completed</td>
-														</tr>
-														<tr>
-														  <td>
-															<code>5/23/2016</code>
-														  </td>
-														  <td>Logged in to the Account at 16:33:01</td>
-														</tr>
-														<tr>
-														  <td>
-															<code>5/22/2016</code>
-														  </td>
-														  <td>Logged in to the Account at 09:41:58</td>
-														</tr>
-														<tr>
-														  <td>
-															<code>5/21/2016</code>
-														  </td>
-														  <td>Logged in to the Account at 17:16:32</td>
-														</tr>
-														<tr>
-														  <td>
-															<code>5/18/2016</code>
-														  </td>
-														  <td>Logged in to the Account at 22:53:41</td>
-														</tr>
+														<?php $_SESSION['user']->get_last_5_orders() ?>
 													  </tbody>
 													</table>
 												</div>
@@ -217,6 +187,23 @@
 											<div class="tab-content clearfix" id="tab-orders">
 
 												<div class="row topmargin-sm clearfix">
+													<table class="table table-bordered table-striped">
+													  <colgroup>
+														<col class="col-xs-1">
+														<col class="col-xs-7">
+													  </colgroup>
+													  <thead>
+														<tr>
+														  <th>Date order</th>
+														  <th>Date delivery</th>
+														  <th>Status</th>
+														  <th>Shipping address</th>
+														</tr>
+													  </thead>
+													  <tbody>
+														<?php $_SESSION['user']->get_orders(); ?>
+													  </tbody>
+													</table>
 
 												</div>
 

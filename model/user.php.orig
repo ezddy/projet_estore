@@ -56,12 +56,13 @@ class User {
 		return $this->firstname;
 	}
 
+<<<<<<< HEAD
 	public function getMail() {
 		return $this->email;
-	}
-
+=======
 	public function getRole() {
 		return $this->role;
+>>>>>>> a7619b335cc9d819e6003cd73d3478b0c3b3f6c9
 	}
 
 	public function logout() {
