@@ -45,14 +45,14 @@
 
 	function insert_product($name, $description, $price, $image, $category, $brand) {
 		$db = get_db_connection();
-		$stmt = $db->prepare("INSERT INTO Product (name, description, price, image, id_Category, id_Brand VALUES(:name, :description, :price, :image, :category, :brand)");
+		$stmt = $db->prepare("INSERT INTO Product (name, description, price, image, id_Category, id_Brand) VALUES(:name, :description, :price, :image, :category, :brand)");
 		$stmt->bindParam(':name', $name);
 		$stmt->bindParam(':description', $description);
 		$stmt->bindParam(':price', $price);
 		$stmt->bindParam(':image', $image);
 		$stmt->bindParam(':category', $category);
 		$stmt->bindParam(':brand', $brand);
-		$stmt->execute() or die ('insert product impossible');
+		$stmt->execute() or die (print_r($stmt->errorInfo(),true));
 	}
 
 	function insert_brand($name) {
@@ -100,4 +100,19 @@
 	        return false;
 	    }
 	}
+
+	function retrieve_brands() {
+		$db = get_db_connection();
+		$stmt = $db->prepare("SELECT * FROM Brand");
+		$stmt->execute() or die ('retrieve brands impossible');
+		return $stmt->fetchAll();
+	}
+
+	function retrieve_category() {
+		$db = get_db_connection();
+		$stmt = $db->prepare("SELECT * FROM Category");
+		$stmt->execute() or die ('retrieve category impossible');
+		return $stmt->fetchAll();
+	}
+
 ?>
