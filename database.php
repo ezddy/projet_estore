@@ -78,14 +78,15 @@
 		$stmt->bindParam(':totalPrice', $totalPrice);
 		$stmt->bindParam(':id_User', $user);
 		$stmt->execute() or die ('insert order impossible');
+		return $db->lastInsertId();
 	}
 
 	function insert_contains($order, $product) {
 		$db = get_db_connection();
-		$stmt = $db->prepare("INSERT INTO contains VALUES(:order, :product)");
+		$stmt = $db->prepare("INSERT INTO contains(id, id_Orders) VALUES(:product, :order)");
 		$stmt->bindParam(':order', $order);
 		$stmt->bindParam(':product', $product);
-		$stmt->execute() or die ('insert contains impossible');
+		$stmt->execute() or die (print_r($stmt->errorInfo(),true));
 	}
 
 	function user_exists($email) {

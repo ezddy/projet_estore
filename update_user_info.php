@@ -2,6 +2,7 @@
 include_once("database.php");
 echo "test";
 if(isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['zip']) && isset($_POST['mail'])){
+	header("Location: profile.php");
 	$fn = $_POST['first-name'];
 	$ln = $_POST['last-name'];
 	$ad = $_POST['address'];
@@ -12,7 +13,8 @@ if(isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['ad
 	$cmd = 'UPDATE user SET firstname="'.$fn.'", lastname="'.$ln.'", address="'.$ad.'", city="'.$ci.'", zipcode="'.$zi.'" WHERE email="'.$ma.'"';
 
 	exec_cmd($cmd);
-	header("Location: profile.php");
+	exit();
+	
 }
 
- ?>
+?>

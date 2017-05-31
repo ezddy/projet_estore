@@ -3,6 +3,7 @@ $path = $_SERVER["DOCUMENT_ROOT"];
 $path .= "/database.php";
 require_once($path);
 class User {
+	private $id;
 	private $email;
 	private $password;
 	private $firstname;
@@ -29,6 +30,7 @@ class User {
 				$this->zipcode = $result['zipcode'];
 				$this->role = $result['role'];
 				$this->password = $result['password'];
+				$this->id = $result['id'];
 				break;
 
 			// Registration
@@ -163,6 +165,14 @@ class User {
 		</div>
 		';
 
+	}
+
+	public function getShippingAddress() {
+		return $this->address . ' ' . $this->city . ' ' . $this->zipcode;
+	}
+
+	public function getId() {
+		return $this->id;
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php 
 $path = $_SERVER["DOCUMENT_ROOT"];
-$path .= "projet_estore/database.php";
+$path .= "/database.php";
 require_once($path);
 
 class Orders {
@@ -17,12 +17,17 @@ class Orders {
 
 		switch($cpt) {
 			// Insert order
-			case 3:
+			case 4:
 				$this->status = "pending";
 				$this->shipping_address = $args[0];
-				$this->dateOrder = date();
+				$this->dateOrder = date("Y-m-d");
 				$this->user = $args[1];
 				$this->totalPrice = $args[2];
+				$items = $args[3];
+				$id_order = insert_order($this->shipping_address, $this->status, $this->dateOrder, $this->totalPrice, $this->user);
+				foreach($items as $row) {
+					insert_contains($id_order, $row);
+				}
 		}
 	}
 }
