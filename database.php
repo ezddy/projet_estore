@@ -1,6 +1,6 @@
 <?php 
 	$path = $_SERVER["DOCUMENT_ROOT"];
-	$path .= '/controller/mail.php';
+	$path .= 'projet_estore/controller/mail.php';
 	require_once($path);
 	function get_db_connection() {
 		$db = new PDO('mysql:host=localhost:3305;dbname=web_prog','root','root');

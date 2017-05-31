@@ -1,7 +1,7 @@
 <?php 
-include_once('model/user.php');
+/*include_once('model/user.php');
 include_once("database.php"); 
-session_start();
+session_start();*/
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -28,7 +28,7 @@ session_start();
 	<title>E-store</title>
 
 
-	<script type="text/javascript" src="js/jquery.js"></script>
+	<!--<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$.ajax({
@@ -79,7 +79,7 @@ session_start();
 				}
 			});
 		}
-	</script>
+	</script> -->
 
 </head>
 
@@ -91,7 +91,7 @@ session_start();
 
 		<!-- Top Bar
 		============================================= -->
-		<?php include('topbar.php'); ?>
+		<?php //include('topbar.php'); ?>
 		<!-- Page Title
 		============================================= -->
 		<section id="page-title">
@@ -118,14 +118,14 @@ session_start();
 					<!-- Shop
 					============================================= -->
 					<div id="shop" class="shop product-1 clearfix">
-						<?php 
+						<?/*php 
 							if(!isset($_GET['category'])){
 								$_GET['category']="";
 							}
 							if(!isset($_GET['Brand'])){
 								$_GET['brand']="";
 							}
-							fill_shop($_GET['category'], $_GET['brand']); 
+							fill_shop($_GET['category'], $_GET['brand']); */
 						?>
 					</div><!-- #shop end -->
 				</div>
@@ -133,4 +133,4 @@ session_start();
 
 		</section><!-- #content end -->
 
-<?php include('footer.html'); ?>
+<?php //include('footer.html'); ?>
