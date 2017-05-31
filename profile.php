@@ -132,7 +132,7 @@
 										<ul class="tab-nav clearfix">
 											<li><a href="#tab-feeds"><i class="icon-rss2"></i> Feeds</a></li>
 											<li><a href="#tab-orders"><i class="icon-pencil2"></i> Orders</a></li>
-											<li><a href="#tab-reviews"><i class="icon-thumbs-up2"></i> Your reviews</a></li>
+											<li><a href="#tab-settings"><i class="icon-cog"></i> Settings</a></li>
 										</ul>
 
 										<div class="tab-container">
@@ -185,9 +185,15 @@
 
 											</div>
 
-											<div class="tab-content clearfix" id="tab-reviews">
+											<div class="tab-content clearfix" id="tab-settings">
 
 												<div class="row topmargin-sm clearfix">
+													<div id="insert_category">
+														<h3>Personal information</h3>
+														<form id="category-form" name="category-form" class="nobottommargin" action="update_user_info.php" method="post">
+														<?php $_SESSION['user']->get_user_info(); ?>
+														</form>
+													</div>
 
 												</div>
 

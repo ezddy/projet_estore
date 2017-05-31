@@ -214,8 +214,7 @@
 								<div class="product-price"><ins>$'.$row['price'].'</ins></div>
 								<p>'.$row['description'].'</p>
 							</div>
-						</div>
-			';
+						</div>';
 		}
 
 		

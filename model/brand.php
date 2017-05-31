@@ -1,6 +1,6 @@
 <?php  
 $path = $_SERVER["DOCUMENT_ROOT"];
-$path .= "/database.php";
+$path .= "projet_estore/database.php";
 require_once($path);
 
 class Brand {
