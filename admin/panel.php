@@ -17,6 +17,10 @@
 
 	if(isset($_POST['name-brand'])) {
 		$brand = new Brand($_POST['name-brand']);
+	}else if(isset($_POST['name-category'])) {
+		$category = new Category($_POST['name-category']);
+	}else if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['image']) && isset($_POST['category']) && isset($_POST['brand'])) {
+		$product = new Product($_POST['name'], $_POST['description'], $_POST['price'], $_POST['image'], $_POST['category'], $_POST['brand']);
 	}
  ?>
 
@@ -57,7 +61,7 @@
 		<section id="page-title">
 
 			<div class="container clearfix">
-				<h1>Side Navigation</h1>
+				<h1>Admin panel</h1>
 				<ol class="breadcrumb">
 					<li><a href="#">Home</a></li>
 					<li class="active">Admin panel</li>
@@ -135,12 +139,26 @@
 										<input type="text" id="image" name="image" class="form-control"/>
 									</div>
 									<div class="col_full">
-										<label for="category">Category name:</label>
-										<input type="text" id="category" name="category" class="form-control"/>
+										<label for="category">Category:</label>
+										<select class="form-control" name="category">
+											<?php $category = retrieve_category();
+
+											foreach ($category as $row) {
+												echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+											}
+											 ?>
+										</select>
 									</div>
 									<div class="col_full">
 										<label for="brand">Brand:</label>
-										<input type="text" id="brand" name="brand" class="form-control"/>
+										<select class="form-control" name="brand">
+											<?php $brand = retrieve_brands();
+
+											foreach ($brand as $row) {
+												echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+											}
+											 ?>
+										</select>
 									</div>
 
 									<div class="col_full nobottommargin">

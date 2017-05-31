@@ -5,6 +5,7 @@
 	if(!isset($_POST['login']) && !isset($_POST['password'])) {
 		header('../login.php');
 	}else {
+		header('Location: ../index.php');
 		$email = $_POST['login'];
 		$password = $_POST['password'];
 		$result = query_cmd("SELECT * FROM User WHERE email = '$email'")->fetch();
@@ -16,8 +17,6 @@
 		}else {
 			header('Location: ../login.php');
 		}
-
-		//header('Location: ../index.php');
 	}
 
 ?>
