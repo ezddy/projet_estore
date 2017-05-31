@@ -49,11 +49,25 @@ class User {
 	}
 
 	public function getLastname() {
-		return $this->lastname;
+		$db = get_db_connection();
+		$cmd = "SELECT lastname FROM user WHERE email=:email";
+		$cmd = $db->prepare($cmd);
+		$cmd->bindParam(':email', $this->email);
+		$cmd->execute();
+		$cmd = $cmd->fetch();
+
+		return $cmd['lastname'];
 	}
 
 	public function getFirstname() {
-		return $this->firstname;
+		$db = get_db_connection();
+		$cmd = "SELECT firstname FROM user WHERE email=:email";
+		$cmd = $db->prepare($cmd);
+		$cmd->bindParam(':email', $this->email);
+		$cmd->execute();
+		$cmd = $cmd->fetch();
+
+		return $cmd['firstname'];
 	}
 
 	public function getMail() {
@@ -71,7 +85,6 @@ class User {
 	public function get_last_5_orders(){
 		$email = $this->email;
 		$cmd = "SELECT status, dateDelivery, dateOrder, totalPrice FROM orders o, user u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC LIMIT 5";
-		echo "$cmd";
 
 		$cmd = query_cmd($cmd);
 
@@ -114,6 +127,44 @@ class User {
 				";
 		}
 	}
+
+	public function get_user_info(){
+		$email = $this->email;
+		$db = get_db_connection();
+		$cmd = "SELECT firstname, lastname, address, city, zipcode FROM user WHERE email=:email";
+		$cmd = $db->prepare($cmd);
+		$cmd->bindParam(':email', $email);
+		$cmd->execute() or die (print_r($cmd->errorInfo(), true));
+
+		$cmd = $cmd->fetch();
+
+		echo '
+		<div class="col_full">
+			<label for="first-name">First name:</label>
+			<input type="text" id="first-name" name="first-name" class="form-control" value="'.$cmd['firstname'].'"/>
+
+			<label for="last-name">Last name:</label>
+			<input type="text" id="last-name" name="last-name" class="form-control" value="'.$cmd['lastname'].'"/>
+
+			<label for="address">Address:</label>
+			<input type="text" id="address" name="address" class="form-control" value="'.$cmd['address'].'"/>
+
+			<label for="city">City:</label>
+			<input type="text" id="city" name="city" class="form-control" value="'.$cmd['city'].'"/>
+
+			<label for="zip">Zip code:</label>
+			<input type="text" id="zip" name="zip" class="form-control" value="'.$cmd['zipcode'].'"/>
+
+			<input type="hidden" id="mail" name="mail" value="'.$email.'"/>
+
+		</div>
+		<div class="col_full nobottommargin">
+			<button class="button button-3d button-black nomargin" id="category-form-submit" name="category-form-submit" value="Update">Update</button>
+		</div>
+		';
+
+	}
+
 }
 
 ?>
