@@ -1,6 +1,6 @@
 <?php 
 $path = $_SERVER["DOCUMENT_ROOT"];
-$path .= "/database.php";
+$path .= "database.php";
 require_once($path);
 
 class Orders {
@@ -25,14 +25,13 @@ class Orders {
 				$this->totalPrice = $args[2];
 				$items = $args[3];
 				$id_order = insert_order($this->shipping_address, $this->status, $this->dateOrder, $this->totalPrice, $this->user);
-				foreach($items as $row) {
+				/*foreach($items as $row) {
 					insert_contains($id_order, $row);
-				}
+				}*/
+				break;
 		}
 	}
 }
  
 
-
 ?>
-

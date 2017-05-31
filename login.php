@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('database.php');
 include('header.html');
 if(isset($_SESSION['user'])) {
 	header('Location: index.php');
@@ -12,83 +13,7 @@ if(isset($_SESSION['user'])) {
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 
-		<!-- Header
-		============================================= -->
-		<header id="header" class="full-header">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="E-store Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="E-store Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li><a href="index.html"><div>Home</div></a></li>
-							<li><a href="#"><div>Keyboards</div></a>
-								<ul>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Steelseries</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Corsair</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							<li><a href="#"><div>Mouses</div></a>
-								<ul>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Steelseries</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Zowie</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							
-							<li><a href="#"><div>Headsets</div></a>
-								<ul>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Sennheiser</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>HyperX</div></a></li>
-									<li><a href="shop.html"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							<li><a href="#"><div>About us</div></a></li>
-						</ul>
-
-						<!-- Top Cart
-						============================================= -->
-						<div id="top-cart">
-							<a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>0</span></a>
-							<div class="top-cart-content">
-								<div class="top-cart-title">
-									<h4>Shopping Cart</h4>
-								</div>
-								<div class="top-cart-action clearfix">
-									<button class="button button-3d button-small nomargin fright">View Cart</button>
-								</div>
-							</div>
-						</div><!-- #top-cart end -->
-
-						<!-- Top Search
-						============================================= -->
-						<div id="top-search">
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input type="text" name="q" class="form-control" placeholder="Type &amp; Hit Enter..">
-							</form>
-						</div><!-- #top-search end -->
-					</nav><!-- #primary-menu end -->
-				</div>
-			</div>
-		</header><!-- #header end -->
+	<?php include_once('topbar.php'); ?>
 
 		<!-- Page Title
 		============================================= -->

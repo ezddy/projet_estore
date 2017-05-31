@@ -13,8 +13,8 @@ if(isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['ad
 	$cmd = 'UPDATE user SET firstname="'.$fn.'", lastname="'.$ln.'", address="'.$ad.'", city="'.$ci.'", zipcode="'.$zi.'" WHERE email="'.$ma.'"';
 
 	exec_cmd($cmd);
-	exit();
 	
 }
+	exit();
 
 ?>

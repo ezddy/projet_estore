@@ -1,6 +1,6 @@
 <?php 
 	$path = $_SERVER["DOCUMENT_ROOT"];
-	$path .= 'projet_estore/controller/mail.php';
+	$path .= '/controller/mail.php';
 	require_once($path);
 	function get_db_connection() {
 		$db = new PDO('mysql:host=localhost:3305;dbname=web_prog','root','root');
@@ -78,7 +78,7 @@
 		$stmt->bindParam(':totalPrice', $totalPrice);
 		$stmt->bindParam(':id_User', $user);
 		$stmt->execute() or die ('insert order impossible');
-		return $db->lastInsertId();
+		//return $db->lastInsertId();
 	}
 
 	function insert_contains($order, $product) {
@@ -207,7 +207,7 @@
 								<a href="#"><img src="'.$row['image'].'" alt="'.$row['name'].'"></a>
 								<div class="product-overlay">
 									<a onclick="cart('.$row['id'].')" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-									<a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
+									<a class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
 								</div>
 							</div>
 							<div class="product-desc">

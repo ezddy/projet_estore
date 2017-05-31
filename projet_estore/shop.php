@@ -122,7 +122,7 @@ session_start();
 							if(!isset($_GET['category'])){
 								$_GET['category']="";
 							}
-							if(!isset($_GET['brand'])){
+							if(!isset($_GET['Brand'])){
 								$_GET['brand']="";
 							}
 							fill_shop($_GET['category'], $_GET['brand']); 
@@ -133,4 +133,4 @@ session_start();
 
 		</section><!-- #content end -->
 
-<?php include('footer.html'); ?>
+<?php //include('footer.html'); ?>
