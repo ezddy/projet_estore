@@ -30,8 +30,8 @@
         id          int (11) Auto_increment  NOT NULL ,
         name        Varchar (25) ,
         description Longtext ,
-        price       decimal(19,4) ,
-        image       Varchar (25) ,
+        price       decimal(19,2) ,
+        image       VARCHAR(2083) ,
         id_Category Int ,
         id_Brand    Int ,
         PRIMARY KEY (id )
@@ -74,4 +74,8 @@
 	
         // Inserting admin
         insert_user('david@gmail.com', 'azerty', '84 bd massena', '0673367797', 'Paris', '75013', 'Ha', 'David', 'admin');
+        insert_user('lp.denisthy@gmail.com', 'azerty', '', '012345678', 'Paris', '75013', 'Thy', 'Denis', 'user');
+        insert_category('Keyboard');
+        insert_brand('Razer');
+        insert_product('BlackWidow', 'Great keyboard', 139.95, 'http://i.imgur.com/fzLpEDJ.jpg', 1,1);
 ?>
