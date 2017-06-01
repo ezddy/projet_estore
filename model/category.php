@@ -1,6 +1,6 @@
 <?php 
 $path = $_SERVER["DOCUMENT_ROOT"];
-$path .= "projet_estore/database.php";
+$path .= "/database.php";
 require_once($path);
 
 class Category{

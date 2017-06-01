@@ -16,25 +16,6 @@ include_once('header.html');
 include_once('database.php');
 
 ?>
-<script type="text/javascript">
-	function order() {
-		var user = <?php echo $_SESSION['user']->getId(); ?>;
-		var address = '<?php echo $_SESSION['user']->getShippingAddress(); ?>';
-		$.ajax({
-			type:'post',
-			url: 'controller/add_order.php',
-			data: {
-				total_price: $('#total').text(),
-				user_id: user,
-				shipping_address: address
-			},
-			success: function(response) {
-				window.location.href = '/index.php';
-			},
-			async: false
-		});
-	}
-</script>
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -66,7 +47,7 @@ include_once('database.php');
 					<div class="row clearfix">
 						<div class="col-md-6">
 							<div class="table-responsive clearfix">
-								<h4>Your Orders</h4>
+								<h4>Your Order</h4>
 
 								<table class="table cart">
 									<thead>
@@ -163,7 +144,12 @@ include_once('database.php');
 								<div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>Paypal</div>
 								<div class="acc_content clearfix">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.</div>
 							</div>
-							<a onclick="order()" class="button button-3d fright">Place Order</a>
+							<form action="controller/add_order.php" method="post">
+								<input type="hidden" name="total_price" value=<?= $total; ?> />
+								<input type="hidden" name="user_id" value=<?= $_SESSION['user']->getId(); ?> />
+								<input type="hidden" name="shipping_address" value=<?= $_SESSION['user']->getShippingAddress(); ?> />
+								<button type="submit" class="button button-3d fright">Place Order</a>
+							</form>
 						</div>
 					</div>
 				</div>

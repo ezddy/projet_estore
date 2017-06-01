@@ -52,7 +52,7 @@ class User {
 
 	public function getLastname() {
 		$db = get_db_connection();
-		$cmd = "SELECT lastname FROM user WHERE email=:email";
+		$cmd = "SELECT lastname FROM User WHERE email=:email";
 		$cmd = $db->prepare($cmd);
 		$cmd->bindParam(':email', $this->email);
 		$cmd->execute();
@@ -63,7 +63,7 @@ class User {
 
 	public function getFirstname() {
 		$db = get_db_connection();
-		$cmd = "SELECT firstname FROM user WHERE email=:email";
+		$cmd = "SELECT firstname FROM User WHERE email=:email";
 		$cmd = $db->prepare($cmd);
 		$cmd->bindParam(':email', $this->email);
 		$cmd->execute();
@@ -86,7 +86,7 @@ class User {
 
 	public function get_last_5_orders(){
 		$email = $this->email;
-		$cmd = "SELECT status, dateDelivery, dateOrder, totalPrice FROM orders o, user u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC LIMIT 5";
+		$cmd = "SELECT status, dateDelivery, dateOrder, totalPrice FROM Orders o, User u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC LIMIT 5";
 
 		$cmd = query_cmd($cmd);
 
@@ -104,7 +104,7 @@ class User {
 
 	public function get_orders(){
 		$email = $this->email;
-		$cmd = "SELECT status, shipping_address, dateDelivery, dateOrder FROM orders o, user u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC";
+		$cmd = "SELECT status, shipping_address, dateDelivery, dateOrder FROM Orders o, User u WHERE u.id=id_User AND email='".$email."' ORDER BY dateOrder DESC";
 		$cmd = query_cmd($cmd);
 
 		foreach ($cmd as $row) {
@@ -133,7 +133,7 @@ class User {
 	public function get_user_info(){
 		$email = $this->email;
 		$db = get_db_connection();
-		$cmd = "SELECT firstname, lastname, address, city, zipcode FROM user WHERE email=:email";
+		$cmd = "SELECT firstname, lastname, address, city, zipcode FROM User WHERE email=:email";
 		$cmd = $db->prepare($cmd);
 		$cmd->bindParam(':email', $email);
 		$cmd->execute() or die (print_r($cmd->errorInfo(), true));

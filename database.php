@@ -38,7 +38,7 @@
 		$stmt->execute();
 
 		if($role === "pending_user") {
-			$link = 'http://localhost:8888/verify.php?user='.$email.'&token='.$hash;
+			$link = 'http://138.197.157.12/verify.php?user='.$email.'&token='.$hash;
 			send_email($email, 'E-mail verification from eStore', 'Verify your account by clicking on this link : ' . $link);
 		}
 	}
@@ -78,7 +78,7 @@
 		$stmt->bindParam(':totalPrice', $totalPrice);
 		$stmt->bindParam(':id_User', $user);
 		$stmt->execute() or die ('insert order impossible');
-		return $db->lastInsertId();
+		//return $db->lastInsertId();
 	}
 
 	function insert_contains($order, $product) {
@@ -120,8 +120,8 @@
 	function fill_nav(){
 		$db = get_db_connection();
 
-		$cmdCateg = $db->prepare("SELECT * FROM category");
-		$cmdBrand = $db->prepare("SELECT DISTINCT b.name AS brandName FROM brand b, product p WHERE b.id=id_Brand AND id_Category=:category");
+		$cmdCateg = $db->prepare("SELECT * FROM Category");
+		$cmdBrand = $db->prepare("SELECT DISTINCT b.name AS brandName FROM Brand b, Product p WHERE b.id=id_Brand AND id_Category=:category");
 
 		$cmdBrand->bindParam(':category', $categ);
 
@@ -154,7 +154,7 @@
 
 	function get_id_brand($brand){
 		$db = get_db_connection();
-		$cmd = "SELECT DISTINCT id FROM brand WHERE name=:brand";
+		$cmd = "SELECT DISTINCT id FROM Brand WHERE name=:brand";
 		$cmd = $db->prepare($cmd);
 		$cmd->bindParam(':brand', $brand);
 		$cmd->execute() or die (print_r($cmd->errorInfo(), true));
@@ -164,7 +164,7 @@
 
 	function get_id_category($category){
 		$db = get_db_connection();
-		$cmd = "SELECT DISTINCT id FROM category WHERE name=:category";
+		$cmd = "SELECT DISTINCT id FROM Category WHERE name=:category";
 		$cmd = $db->prepare($cmd);
 		$cmd->bindParam(':category', $category);
 		$cmd->execute() or die (print_r($cmd->errorInfo(), true));
@@ -207,7 +207,7 @@
 								<a href="#"><img src="'.$row['image'].'" alt="'.$row['name'].'"></a>
 								<div class="product-overlay">
 									<a onclick="cart('.$row['id'].')" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-									<a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
+									<a class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
 								</div>
 							</div>
 							<div class="product-desc">

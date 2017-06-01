@@ -76,6 +76,11 @@
         insert_user('david@gmail.com', 'azerty', '84 bd massena', '0673367797', 'Paris', '75013', 'Ha', 'David', 'admin');
         insert_user('lp.denisthy@gmail.com', 'azerty', '', '012345678', 'Paris', '75013', 'Thy', 'Denis', 'user');
         insert_category('Keyboard');
+        insert_category('Mice');
         insert_brand('Razer');
-        insert_product('BlackWidow', 'Great keyboard', 139.95, 'http://i.imgur.com/fzLpEDJ.jpg', 1,1);
+        insert_brand('SteelSeries');
+        insert_product('BlackWidow', 'Great keyboard from Razer', 139.95, 'http://i.imgur.com/fzLpEDJ.jpg', 1,1);
+        insert_product('DeathAdder', 'Great mouse from Razer', 59.99, 'https://d1urewwzb2qwii.cloudfront.net/sys-master/images/h14/hbc/8823344791582', 2,1);
+        insert_product('Apex M500', 'Great keyboard from SteelSeries', 149.99, 'https://media.steelseriescdn.com/thumbs/catalogue/products/00710-apex-m500/fc02865fcd854eac8914f7ce55e693e0.png.1000x575_q85_crop-smart.png', 1,2);
+        insert_product('Rival 100', 'Great mouse from SteelSeries', 59.99, 'https://media.steelseriescdn.com/filer_public/e0/05/e005554b-b4bb-40c7-b01c-f26406098e34/purchase-gallery-template-100__hero.png', 2,2);        
 ?>

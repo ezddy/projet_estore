@@ -122,7 +122,7 @@ session_start();
 							if(!isset($_GET['category'])){
 								$_GET['category']="";
 							}
-							if(!isset($_GET['Brand'])){
+							if(!isset($_GET['brand'])){
 								$_GET['brand']="";
 							}
 							fill_shop($_GET['category'], $_GET['brand']); 

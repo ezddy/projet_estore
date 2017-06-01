@@ -30,32 +30,6 @@
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 
-		<!-- Header
-		============================================= -->
-		<header id="header" class="full-header">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="/images/logo-dark.png"><img src="/images/logo.png" alt="eStore Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="/images/logo-dark@2x.png"><img src="/images/logo@2x.png" alt="eStore Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<?php require_once('../navbar.php'); ?>
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
-
 		<!-- Page Title
 		============================================= -->
 		<section id="page-title">
@@ -63,7 +37,7 @@
 			<div class="container clearfix">
 				<h1>Admin panel</h1>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
+					<li><a href="../index.php">Home</a></li>
 					<li class="active">Admin panel</li>
 				</ol>
 			</div>

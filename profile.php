@@ -1,6 +1,11 @@
 <?php 
 	include_once("model/user.php");
 	session_start();
+	if(!isset($_SESSION['user'])) {
+		header('Location: login.php');
+	}else if($_SESSION['user']->getRole() === "admin") {
+		header('Location: admin/panel.php');
+	}
 	include_once('header.html');
 ?>
 
@@ -23,8 +28,8 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="E-store Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="E-store Logo"></a>
+						<a href="index.php" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="E-store Logo"></a>
+						<a href="index.php" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="E-store Logo"></a>
 					</div><!-- #logo end -->
 
 					<div id="top-account" class="dropdown">
@@ -37,64 +42,6 @@
 							<li><a href="#">Logout <i class="icon-signout"></i></a></li>
 						</ul>
 					</div>
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li><a href="index-shop.html"><div>Home</div></a></li>
-							<li><a href="#"><div>Keyboards</div></a>
-								<ul>
-									<li><a href="#"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Steelseries</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Corsair</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							<li><a href="#"><div>Mouses</div></a>
-								<ul>
-									<li><a href="#"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Steelseries</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Zowie</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							
-							<li><a href="#"><div>Headsets</div></a>
-								<ul>
-									<li><a href="#"><div><i class="icon-stack"></i>Logitech</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Sennheiser</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>HyperX</div></a></li>
-									<li><a href="#"><div><i class="icon-stack"></i>Razer</div></a></li>
-								</ul>
-							</li>
-							<li><a href="#"><div>About us</div></a></li>
-						</ul>
-						
-													
-
-						<!-- Top Cart
-						============================================= -->
-						<div id="top-cart">
-							<a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>0</span></a>
-							<div class="top-cart-content">
-								<div class="top-cart-title">
-									<h4>Shopping Cart</h4>
-								</div>
-							</div>
-						</div><!-- #top-cart end -->
-
-						<!-- Top Search
-						============================================= -->
-						<div id="top-search">
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-							</form>
-						</div><!-- #top-search end -->
-
-					</nav><!-- #primary-menu end -->
 
 				</div>
 
