@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('database.php');
 include('header.html');
 include('database.php');
 if(isset($_SESSION['user'])) {
